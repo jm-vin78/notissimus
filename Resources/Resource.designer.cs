@@ -5378,7 +5378,7 @@ namespace Offers
 			public const int textStart = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int textViewItemId = 2131230988;
+			public const int textViewOfferJson = 2131230988;
 			
 			// aapt resource value: 0x7F08010D
 			public const int text_input_end_icon = 2131230989;

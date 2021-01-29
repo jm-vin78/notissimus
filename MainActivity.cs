@@ -51,7 +51,7 @@ namespace Offers
                 var itemId = ((TextView)args.View).Text;
                 var item = _offerClasses.SingleOrDefault(x => x.Id == itemId);
                 var itemJson = JsonConvert.SerializeObject(item, Newtonsoft.Json.Formatting.Indented);
-                intent.PutExtra("ITEM_ID", itemJson);
+                intent.PutExtra("OFFER_JSON", itemJson);
                 StartActivity(intent);
             }
         }

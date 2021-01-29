@@ -12,10 +12,10 @@ namespace Offers
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_details);
-            var itemId = Intent.GetStringExtra("ITEM_ID");
+            var offerJson = Intent.GetStringExtra("OFFER_JSON");
 
-            var itemIdTextView = FindViewById<TextView>(Resource.Id.textViewItemId);
-            itemIdTextView.Text = itemId;
+            var offerJsonTextView = FindViewById<TextView>(Resource.Id.textViewOfferJson);
+            offerJsonTextView.Text = offerJson;
         }
     }
 }
