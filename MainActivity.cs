@@ -33,7 +33,7 @@ namespace Offers
             listView.TextFilterEnabled = true;
             listView.ItemClick += OnListItemClick;
 
-            Task.Run(LoadDataFromXML);
+            Task.Run(async () => await LoadDataFromXMLAsync());
         }
 
         protected override void OnResume()
@@ -56,10 +56,10 @@ namespace Offers
             }
         }
 
-        public void LoadDataFromXML()
+        public async Task LoadDataFromXMLAsync()
         {
             var dataLoader = new XMLDataLoader();
-            _offerClasses = dataLoader.LoadDataFromXML();
+            _offerClasses = await dataLoader.LoadDataFromXMLAsync();
 
             Handler handler = new Handler(Looper.MainLooper);
             handler.Post(() =>

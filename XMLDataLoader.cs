@@ -2,20 +2,25 @@
 using Offers.Models;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace Offers
 {
     internal class XMLDataLoader
     {
-        public List<OfferBase> LoadDataFromXML()
+        static readonly HttpClient client = new HttpClient();
+
+        public async Task<List<OfferBase>> LoadDataFromXMLAsync()
         {
             XmlDocument xmlDoc = new XmlDocument();
             var offerClasses = new List<OfferBase>();
 
             try
             {
-                xmlDoc.Load("http://partner.market.yandex.ru/pages/help/YML.xml");
+                var document = await client.GetStreamAsync("https://partner.market.yandex.ru/pages/help/YML.xml");
+                xmlDoc.Load(document);
 
                 for (var i = 0; i < xmlDoc.SelectNodes("//offer").Count; i++)
                 {
